@@ -1,4 +1,6 @@
-require_relative 'quake3_log_parser.rb'
+# frozen_string_literal: true
+
+require_relative 'quake3_log_parser'
 
 results = Quake3LogParser.new.parse(ARGV[0])
 

@@ -21,9 +21,9 @@ class Quake3LogParser
     end
 
     parse_presenter
-  rescue Errno::ENOENT => err
-    "Could not find file: #{filename}"
-    raise err
+  rescue Errno::ENOENT => e
+    puts "Could not find file: #{filename}"
+    raise e
   end
 
   private
@@ -62,6 +62,7 @@ class Quake3LogParser
     @current_match = nil
   end
 
+  # rubocop:disable Metrics/MethodLength
   def parse_presenter
     results = {}
     matches.each_with_index do |match, index|
@@ -75,4 +76,5 @@ class Quake3LogParser
     end
     results
   end
+  # rubocop:enable Metrics/MethodLength
 end

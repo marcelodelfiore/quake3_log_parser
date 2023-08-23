@@ -11,6 +11,7 @@ class Match
     @kill_by_means = {}
   end
 
+  # rubocop:disable Metrics/AbcSize
   def add_kill(entry_data)
     if entry_data[:killer] == '<world>'
       killed_loses_one_kill(entry_data[:killed])
@@ -19,7 +20,9 @@ class Match
       @players << entry_data[:killed] unless @players.include?(entry_data[:killed])
       @kills.key?(entry_data[:killer]) ? @kills[entry_data[:killer]] += 1 : @kills[entry_data[:killer]] = 1
     end
+    # rubocop:disable Layout/LineLength
     @kill_by_means.key?(entry_data[:reason]) ? @kill_by_means[entry_data[:reason]] += 1 : @kill_by_means[entry_data[:reason]] = 1
+    # rubocop:enable Layout/LineLength
     @number_of_kills += 1
   end
 
@@ -28,4 +31,5 @@ class Match
 
     @kills[player] -= 1 if (@kills[player]).positive?
   end
+  # rubocop:enable Metrics/AbcSize
 end
