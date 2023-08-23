@@ -69,7 +69,8 @@ class Quake3LogParser
         {
           total_kills: match.number_of_kills,
           players: match.players,
-          kills: match.kills
+          kills: match.kills,
+          kill_by_means: match.kill_by_means
         }
     end
     results

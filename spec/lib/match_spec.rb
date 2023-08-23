@@ -22,6 +22,7 @@ describe Match do
 
       expect(m.number_of_kills).to eq(1)
       expect(m.players.length).to eq(2)
+      expect(m.kill_by_means.length).to eq(1)
     end
 
     it 'should not duplicate players' do
@@ -33,6 +34,7 @@ describe Match do
 
       expect(m.number_of_kills).to eq(3)
       expect(m.players.length).to eq(2)
+      expect(m.kill_by_means.length).to eq(1)
     end
 
     it 'should assign <world> kill, but not create kill entry' do
@@ -42,6 +44,7 @@ describe Match do
 
       expect(m.number_of_kills).to eq(1)
       expect(m.players.length).to eq(0)
+      expect(m.kill_by_means.length).to eq(1)
     end
 
     it 'should discount a kill when killed by <world>' do
@@ -50,9 +53,10 @@ describe Match do
       m.add_kill(entry_data)
       expect(m.kills['Killed']).to eq(1)
 
-      entry_data = { killer: '<world>', killed: 'Killed', reason: 'Reason' }
+      entry_data = { killer: '<world>', killed: 'Killed', reason: 'Reason2' }
       m.add_kill(entry_data)
       expect(m.kills['Killed']).to eq(0)
+      expect(m.kill_by_means.length).to eq(2)
     end
   end
 end

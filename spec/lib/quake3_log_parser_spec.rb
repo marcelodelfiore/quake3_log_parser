@@ -14,6 +14,7 @@ describe Quake3LogParser do
       expect(p['game_1'][:total_kills]).to eq(1)
       expect(p['game_1'][:players].length).to eq(0)
       expect(p['game_1'][:kills].length).to eq(0)
+      expect(p['game_1'][:kill_by_means].length).to eq(1)
     end
   end
 
@@ -23,6 +24,7 @@ describe Quake3LogParser do
       expect(p['game_1'][:total_kills]).to eq(3)
       expect(p['game_1'][:players].length).to eq(2)
       expect(p['game_1'][:kills].length).to eq(2)
+      expect(p['game_1'][:kill_by_means].length).to eq(2)
 
       expect(p['game_1'][:players]).to match_array(['Rat X', 'Isgalamido'])
     end
@@ -35,10 +37,12 @@ describe Quake3LogParser do
       expect(p['game_1'][:total_kills]).to eq(3)
       expect(p['game_1'][:players].length).to eq(2)
       expect(p['game_1'][:kills].length).to eq(2)
+      expect(p['game_1'][:kill_by_means].length).to eq(2)
 
       expect(p['game_2'][:total_kills]).to eq(3)
       expect(p['game_2'][:players].length).to eq(3)
       expect(p['game_2'][:kills].length).to eq(3)
+      expect(p['game_2'][:kill_by_means].length).to eq(2)
     end
   end
 

@@ -2,12 +2,13 @@
 
 # Match class for parsing Quake3 log files
 class Match
-  attr_accessor :number_of_kills, :players, :kills
+  attr_accessor :number_of_kills, :players, :kills, :kill_by_means
 
   def initialize
     @number_of_kills = 0
     @players = []
     @kills = {}
+    @kill_by_means = {}
   end
 
   def add_kill(entry_data)
@@ -18,6 +19,7 @@ class Match
       @players << entry_data[:killed] unless @players.include?(entry_data[:killed])
       @kills.key?(entry_data[:killer]) ? @kills[entry_data[:killer]] += 1 : @kills[entry_data[:killer]] = 1
     end
+    @kill_by_means.key?(entry_data[:reason]) ? @kill_by_means[entry_data[:reason]] += 1 : @kill_by_means[entry_data[:reason]] = 1
     @number_of_kills += 1
   end
 
