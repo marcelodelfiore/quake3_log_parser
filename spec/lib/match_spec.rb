@@ -2,7 +2,6 @@
 
 require 'spec_helper'
 require 'match'
-require 'pry-byebug'
 
 # rubocop:disable Metrics/BlockLength
 describe Match do
