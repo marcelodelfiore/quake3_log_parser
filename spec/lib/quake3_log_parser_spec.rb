@@ -11,22 +11,22 @@ describe Quake3LogParser do
   context 'parse a single game with single kill' do
     it 'should process correctly' do
       p = Quake3LogParser.new.parse(File.expand_path(File.join(File.dirname(__FILE__), 'data/case1.log')))
-      expect(p['game_1'][:total_kills]).to eq(1)
-      expect(p['game_1'][:players].length).to eq(0)
-      expect(p['game_1'][:kills].length).to eq(0)
-      expect(p['game_1'][:kill_by_means].length).to eq(1)
+      expect(p[:game_1][:total_kills]).to eq(1)
+      expect(p[:game_1][:players].length).to eq(0)
+      expect(p[:game_1][:kills].length).to eq(0)
+      expect(p[:game_1][:kill_by_means].length).to eq(1)
     end
   end
 
   context 'parse a single game with multiple kills' do
     it 'should process correctly' do
       p = Quake3LogParser.new.parse(File.expand_path(File.join(File.dirname(__FILE__), 'data/case2.log')))
-      expect(p['game_1'][:total_kills]).to eq(3)
-      expect(p['game_1'][:players].length).to eq(2)
-      expect(p['game_1'][:kills].length).to eq(2)
-      expect(p['game_1'][:kill_by_means].length).to eq(2)
+      expect(p[:game_1][:total_kills]).to eq(3)
+      expect(p[:game_1][:players].length).to eq(2)
+      expect(p[:game_1][:kills].length).to eq(2)
+      expect(p[:game_1][:kill_by_means].length).to eq(2)
 
-      expect(p['game_1'][:players]).to match_array(['Rat X', 'Isgalamido'])
+      expect(p[:game_1][:players]).to match_array(['Rat X', 'Isgalamido'])
     end
   end
 
@@ -34,15 +34,15 @@ describe Quake3LogParser do
     it 'should process correctly' do
       p = Quake3LogParser.new.parse(File.expand_path(File.join(File.dirname(__FILE__), 'data/case3.log')))
       expect(p.length).to eq(2)
-      expect(p['game_1'][:total_kills]).to eq(3)
-      expect(p['game_1'][:players].length).to eq(2)
-      expect(p['game_1'][:kills].length).to eq(2)
-      expect(p['game_1'][:kill_by_means].length).to eq(2)
+      expect(p[:game_1][:total_kills]).to eq(3)
+      expect(p[:game_1][:players].length).to eq(2)
+      expect(p[:game_1][:kills].length).to eq(2)
+      expect(p[:game_1][:kill_by_means].length).to eq(2)
 
-      expect(p['game_2'][:total_kills]).to eq(3)
-      expect(p['game_2'][:players].length).to eq(3)
-      expect(p['game_2'][:kills].length).to eq(3)
-      expect(p['game_2'][:kill_by_means].length).to eq(2)
+      expect(p[:game_2][:total_kills]).to eq(3)
+      expect(p[:game_2][:players].length).to eq(3)
+      expect(p[:game_2][:kills].length).to eq(3)
+      expect(p[:game_2][:kill_by_means].length).to eq(2)
     end
   end
 
