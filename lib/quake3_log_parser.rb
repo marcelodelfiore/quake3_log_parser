@@ -66,7 +66,8 @@ class Quake3LogParser
   def parse_presenter
     results = {}
     matches.each_with_index do |match, index|
-      results["game_#{index + 1}"] =
+      game_id = "game_#{index + 1}".to_sym
+      results[game_id] =
         {
           total_kills: match.number_of_kills,
           players: match.players,
